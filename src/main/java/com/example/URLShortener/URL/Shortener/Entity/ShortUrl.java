@@ -1,6 +1,7 @@
 package com.example.URLShortener.URL.Shortener.Entity;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
@@ -8,10 +9,10 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
-import java.util.*;
 
 @Data
 @Document(collection = "urls")
+@NoArgsConstructor
 public class ShortUrl {
 
     @Id
@@ -27,5 +28,6 @@ public class ShortUrl {
     private LocalDateTime createdAt = LocalDateTime.now();
 
     private int clickCount = 0;
+
 
 }

@@ -34,6 +34,7 @@ public class SecurityConfig {
                         .requestMatchers("/user/auth/update/**").hasAnyRole("USER", "ADMIN")
                         .requestMatchers("/user/auth/delete/**").hasRole("ADMIN")
                         .requestMatchers("/api/auth/**").hasAnyRole("ADMIN", "USER")
+                        .requestMatchers("/api/url/**").permitAll()
 
                         .anyRequest().authenticated())
                 .formLogin(Customizer.withDefaults())

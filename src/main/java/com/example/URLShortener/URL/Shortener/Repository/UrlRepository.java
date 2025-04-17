@@ -10,4 +10,5 @@ public interface UrlRepository extends MongoRepository<ShortUrl, ObjectId> {
 
     ShortUrl findByShortCode(String shortCode);
     boolean existsByShortCode(String shortCode);
+    ShortUrl countByShortCode(String shortCode);
 }
