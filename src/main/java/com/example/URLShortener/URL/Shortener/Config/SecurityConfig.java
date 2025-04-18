@@ -30,11 +30,12 @@ public class SecurityConfig {
 
                 .authorizeHttpRequests(requests -> requests
                         .requestMatchers("/user/auth/register/**").permitAll()
+                        .requestMatchers("/user/auth/url/**").hasAnyRole("ADMIN", "USER")
                         .requestMatchers("/user/auth/admin/**").hasRole("ADMIN")
                         .requestMatchers("/user/auth/update/**").hasAnyRole("USER", "ADMIN")
                         .requestMatchers("/user/auth/delete/**").hasRole("ADMIN")
                         .requestMatchers("/api/auth/**").hasAnyRole("ADMIN", "USER")
-                        .requestMatchers("/api/url/**").permitAll()
+                        .requestMatchers("/api/url/**").hasAnyRole("ADMIN", "USER")
 
                         .anyRequest().authenticated())
                 .formLogin(Customizer.withDefaults())

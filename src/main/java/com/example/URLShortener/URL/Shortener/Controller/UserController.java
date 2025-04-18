@@ -1,5 +1,6 @@
 package com.example.URLShortener.URL.Shortener.Controller;
 
+import com.example.URLShortener.URL.Shortener.Entity.ShortUrl;
 import com.example.URLShortener.URL.Shortener.Entity.User;
 import com.example.URLShortener.URL.Shortener.Model.UserDTO;
 import com.example.URLShortener.URL.Shortener.Repository.UserRepository;
@@ -8,10 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/user/auth")
@@ -60,6 +64,8 @@ public class UserController {
 
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
    }
+
+
 
    @PreAuthorize("hasAnyRole('ADMIN', 'USER')")
    @PutMapping("/update/{userName}")

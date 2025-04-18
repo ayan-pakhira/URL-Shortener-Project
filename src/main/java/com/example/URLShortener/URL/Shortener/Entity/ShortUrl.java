@@ -18,6 +18,8 @@ public class ShortUrl {
     @Id
     private ObjectId id;
 
+    private String userName;
+
     @NonNull
     private String originalUrl;
 
